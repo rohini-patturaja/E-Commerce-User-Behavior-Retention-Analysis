@@ -1,5 +1,5 @@
 # E-Commerce User Behavior & Retention Analysis
-Decoding 500,000 Transactions to Understand Who Your Best Customers Are — and How to Keep Them
+Decoding 500,000 Transactions to Understand Who Your Best Customers Are and How to Keep Them
 
 Most businesses know their revenue. Very few know which customers are quietly generating most of it, and which ones are one bad experience away from leaving forever. This project closes that gap.
 

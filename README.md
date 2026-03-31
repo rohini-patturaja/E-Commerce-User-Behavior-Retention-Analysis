@@ -1,164 +1,139 @@
-# 🛍️ E-Commerce User Behavior & Retention Analysis
+# E-Commerce User Behavior & Retention Analysis
+Decoding 500,000 Transactions to Understand Who Your Best Customers Are — and How to Keep Them
 
-This project analyzes customer behavior from an e-commerce store using techniques like **A/B testing**, **segmentation**, and **cohort analysis**. It uncovers data-driven insights to improve **user retention**, **monetization**, and overall **business performance**.
-
----
-
-## 📁 1. Introduction
-
-- **Dataset**: Online Retail data from a UK-based store *(Dec 2010 – Dec 2011)*
-- **Objective**: Understand customer value, improve revenue, and test strategic hypotheses
-- **Tools Used**:  
-  `Python` (Pandas, Matplotlib, Seaborn)  
-  `StatsModels`, `Scipy`
-- **Core Techniques**:  
-  - RFM Segmentation  
-  - A/B Testing  
-  - Multivariate Testing  
-  - Cohort Analysis  
+Most businesses know their revenue. Very few know which customers are quietly generating most of it, and which ones are one bad experience away from leaving forever. This project closes that gap.
 
 ---
 
-## 📊 2. Data Description
+## The Business Problem
 
-- ~500,000 transactions
-- Key Fields: `InvoiceDate`, `CustomerID`, `Quantity`, `UnitPrice`, `Country`, `Description`
-- Filtered to include:
-  - Only **UK customers**
-  - Only **non-cancelled transactions**
-- New Field Created:
-  - **Revenue = Quantity × UnitPrice**
+Running an e-commerce store without behavioral analytics is like navigating a city without a map. This project analyzes over 500,000 UK-based transactions to answer critical business questions:
 
----
-
-## 🎯 3. Business Impact
-
-- Identify **high-value users** and segments
-- Simulate **pricing/discount** strategies
-- Analyze **long-term customer behavior**
-- Build **actionable insights** for marketing and product teams
+- Who are the highest-value customers?
+- Do discounts actually increase revenue?
+- Are customers being retained or lost after first purchase?
+- Which cohorts drive long-term value?
 
 ---
 
-## 🧩 4. Segmentation – RFM Analysis
+## Dataset Overview
 
-> **RFM = Recency, Frequency, Monetary**
-
-- Customers grouped into RFM scores (e.g., **444** = best)
-- 📌 **Key Findings**:
-  - 460 customers were in top **RFM 444** segment
-  - Average revenue of **RFM 444s**: £7,948
-  - These users are **repeat buyers** with high lifetime value
-
----
-
-## 🧪 5. A/B Testing – Discount Simulation
-
-- Simulated 50/50 split:
-  - **Test Group**: Received 10% discount
-  - **Control Group**: No discount
-- **Metrics Compared**:
-  - Conversion Rate
-  - ARPU (Average Revenue per User)
-
-📉 **Result**:
-- Control group outperformed test group
-- No statistically significant improvement in ARPU *(p = 0.33)*
-- **Flat discounting is not effective**
+| Attribute            | Detail                          |
+|---------------------|--------------------------------|
+| Total Transactions  | ~500,000 records               |
+| Time Period         | Dec 2010 – Dec 2011            |
+| Geography           | UK only                        |
+| Key Fields          | Invoice Date, Customer ID, Quantity, Unit Price |
+| Engineered Feature  | Revenue = Quantity × Unit Price |
+| Scope Filter        | Non-cancelled transactions     |
 
 ---
 
-## 🧪 6. Multivariate Testing – Discount × Category
+## Tech Stack
 
-- Tested combinations of:
-  - `discount_flag` (yes/no)
-  - `product category` (Clothing, Home, Toys, Other)
-
-📌 **Key Insights**:
-- Discount alone: Not significant *(p = 0.37)*
-- No interaction between discount and category
-- **Product category** had marginal significance *(p ≈ 0.05)*
-- ➤ Focus on **category-specific strategies** instead of generic promotions
+- **Data Processing:** Python, Pandas  
+- **Visualization:** Matplotlib, Seaborn  
+- **Statistical Testing:** StatsModels, SciPy  
+- **Core Methods:** RFM Segmentation, A/B Testing, Multivariate Testing, Cohort Analysis  
 
 ---
 
-## 📆 7. Cohort Analysis – Retention
+## Data Cleaning & Preparation
 
-- Grouped users by **first purchase month**
-- Tracked **monthly retention** for 12 months
-
-📈 **Insights**:
-- **December 2010** cohort had highest long-term retention  
-  → 50% still active in **Month 11**
-- Most cohorts dropped to **20–30% by Month 3**
-- Feb–Apr 2011 cohorts showed moderate improvement
+- Removed cancelled transactions and duplicates  
+- Filtered to UK-only customers for consistency  
+- Engineered revenue feature  
+- Created RFM (Recency, Frequency, Monetary) metrics  
 
 ---
 
-## 💰 8. Cohort Analysis – Revenue
+## Methodology
 
-### 🔹 Total Revenue by Cohort
-- **December 2010** generated the highest revenue across all months
-- March & May cohorts had revenue spikes in later months
+### 1. RFM Segmentation
+Identified high-value customers based on purchase behavior.
 
-### 🔹 Average Revenue per User (ARPU)
-- **Normalized** to remove cohort size bias
-- **August 2011** peaked at **£1,218 per user** in Month 3
-- **May 2011**, Month 7 had outlier revenue: **£7,696 per user**
-- Helped identify **quality over quantity** in customer behavior
+- Top segment (RFM 444): 460 customers  
+- Average revenue per customer: £7,948  
+- Represents the most loyal and profitable users  
 
 ---
 
-## ✅ 9. Summary
+### 2. A/B Testing (Discount Impact)
 
-This project walks through the **complete customer analytics lifecycle** using real-world e-commerce data.
+- Simulated 10% discount vs no discount  
+- Control group outperformed test group in ARPU  
+- Result: No statistically significant uplift (p = 0.33)  
 
-### 🔍 Exploratory Data Analysis (EDA)
-- Identified trends in **daily revenue**, **top products**, and **geographic patterns**
-
-### 📊 RFM Segmentation
-- Grouped users by Recency, Frequency, and Monetary scores  
-- **Top segment (444)** had high engagement and LTV  
-→ Ideal for loyalty or premium offers
-
-### 🧪 A/B Testing
-- Tested blanket discounts  
-- No uplift in conversion or revenue  
-→ Blanket discounts not effective
-
-### 🧪 Multivariate Testing
-- Found product category affects purchase more than discounts  
-→ Use **category-targeted offers** instead
-
-### 📆 Cohort Retention
-- December 2010 cohort retained **50% of users** by Month 11  
-→ Successful acquisition or seasonality
-
-### 💰 Cohort Revenue
-- Normalized revenue showed **hidden value** in smaller cohorts  
-→ Focus on ARPU, not just total revenue
+Conclusion: Blanket discounts reduce margin without increasing revenue.
 
 ---
 
-## 💡 10. Business Recommendations
+### 3. Multivariate Testing
 
-- ✅ Prioritize **RFM 444** customers for loyalty and upsell programs
-- 🚫 Avoid **flat discounts** – they don’t drive revenue growth
-- 🎯 Segment by **product category** for promotional targeting
-- 📈 Improve **onboarding flows** for cohorts with early drop-off
-- 🔁 Use **cohort analysis monthly** to track retention and LTV
+- Tested interaction between discount and product category  
+- Discount effect remained insignificant (p = 0.37)  
+- Product category showed stronger influence on purchase behavior  
 
----
-
-## 📌 Tools & Technologies
-
-| Category           | Tools Used                                  |
-|--------------------|----------------------------------------------|
-| **Programming**    | Python                                       |
-| **Libraries**      | Pandas, Matplotlib, Seaborn, StatsModels     |
-| **Analysis**       | A/B Testing, Multivariate Testing, RFM, Cohorts |
-| **Data Source**    | Online Retail CSV (UK-based e-commerce)      |
+Conclusion: Product relevance matters more than pricing incentives.
 
 ---
 
+### 4. Cohort Analysis
 
+Measured retention across customer cohorts.
+
+- December 2010 cohort: 50% retention at Month 11  
+- Typical cohorts: drop to 20–30% by Month 3  
+- August 2011 cohort: high ARPU despite small size  
+
+Conclusion: Customer quality varies significantly by acquisition timing.
+
+---
+
+## Key Findings
+
+- High-value customers (RFM 444) drive disproportionate revenue  
+- Discounts do not significantly improve performance  
+- Product category influences behavior more than promotions  
+- Retention drops sharply within first 3 months  
+- Small, high-value cohorts outperform large low-value cohorts  
+
+---
+
+## Recommendations
+
+1. Focus on retaining high-value RFM segments  
+2. Eliminate blanket discount strategies  
+3. Invest in category-based targeting  
+4. Analyze and replicate high-retention cohorts (Dec 2010)  
+5. Introduce retention interventions before Month 3 drop-off  
+6. Measure acquisition quality using ARPU, not just volume  
+7. Track cohort performance on a recurring basis  
+
+---
+
+## Conclusion
+
+This project demonstrates that sustainable growth comes from understanding customer behavior at a granular level. Aggregate metrics hide critical insights, while segmentation, experimentation, and cohort analysis reveal the true drivers of revenue and retention.
+
+The findings challenge common assumptions:
+- Discounts are not always effective  
+- Customer quality matters more than volume  
+- Retention patterns define long-term success  
+
+Businesses that leverage these insights can move from reactive decision-making to data-driven strategy.
+
+---
+
+## Tools & Data
+
+- Python, Pandas, Matplotlib, Seaborn  
+- StatsModels, SciPy  
+- Dataset: UCI Online Retail (UK-based transactions)
+
+---
+
+## Author
+
+Rohini Patturaja  
+© 2025
